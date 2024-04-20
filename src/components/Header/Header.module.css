@@ -1,0 +1,9 @@
+.header {
+  border-bottom: calc(0.1rem * var(--mantine-scale)) solid #1971c2;
+}
+.section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
