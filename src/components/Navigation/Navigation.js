@@ -29,7 +29,12 @@ const Navigation = () => {
       to={item.href}
       key={item.title}
       active={index === active}
-      label={<Text size="md">{item.title}</Text>}
+      variant="subtle"
+      label={
+        <Text size="md" fw={500}>
+          {item.title}
+        </Text>
+      }
       leftSection={<item.icon size={16} stroke={1.5} />}
       onClick={() => setActive(index)}
     />
