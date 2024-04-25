@@ -2,6 +2,7 @@ import { Flex, NavLink, Text } from "@mantine/core";
 import { NavLink as Link } from "react-router-dom";
 import { IconHome2, IconUser, IconUserStar } from "@tabler/icons-react";
 import { useState } from "react";
+import classes from "./Navigation.module.css";
 
 const data = [
   {
@@ -25,6 +26,7 @@ const Navigation = () => {
   const [active, setActive] = useState(0);
   const navigationItems = data.map((item, index) => (
     <NavLink
+      className={classes.navLink}
       component={Link}
       to={item.href}
       key={item.title}
