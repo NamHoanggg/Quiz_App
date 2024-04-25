@@ -11,6 +11,7 @@ import {
   IconLayoutDashboardFilled,
   IconAdjustmentsFilled,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
   const { collapsed } = props;
@@ -80,19 +81,12 @@ const SideBar = (props) => {
       >
         <Divider c="#141414" size="xs" my="20" opacity={0.6} />
 
-        <SubMenu
-          label="Dashboards"
+        <MenuItem
+          component={<Link to="/admin" />}
           icon={<IconLayoutDashboardFilled size={18} stroke={1.5} />}
-          rootStyles={{
-            ["." + menuClasses.subMenuContent]: {
-              backgroundColor: "#aaa",
-            },
-          }}
         >
-          <MenuItem>Pie charts</MenuItem>
-          <MenuItem> Line charts</MenuItem>
-          <MenuItem> Bar charts</MenuItem>
-        </SubMenu>
+          Dashboards
+        </MenuItem>
 
         <SubMenu
           label="Features"
@@ -103,7 +97,9 @@ const SideBar = (props) => {
             },
           }}
         >
-          <MenuItem> User management</MenuItem>
+          <MenuItem component={<Link to="/admin/manage-users" />}>
+            User management
+          </MenuItem>
           <MenuItem> Quiz management</MenuItem>
           <MenuItem> Question management</MenuItem>
         </SubMenu>
