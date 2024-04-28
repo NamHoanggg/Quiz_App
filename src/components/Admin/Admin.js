@@ -8,13 +8,11 @@ const Admin = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Flex>
-      <SideBar collapsed={collapsed} />
-      <Box flex={1}>
-        <IconMenu2 onClick={() => setCollapsed(!collapsed)} />
+    <>
+      <SideBar>
         <Outlet />
-      </Box>
-    </Flex>
+      </SideBar>
+    </>
   );
 };
 export default Admin;
