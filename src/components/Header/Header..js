@@ -12,12 +12,11 @@ import {
 } from "@mantine/core";
 import { useClickOutside, useDisclosure } from "@mantine/hooks";
 
-import classes from "./Header.module.css";
 import Navigation from "../Navigation/Navigation";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import SearchMobile from "../NavbarMobile/SearchMobile";
-import Settings from "../Navigation/Settings";
 import Logo from "../../assets/images/logo.png";
+import Auth from "../Navigation/Auth";
 
 const Header = ({ children }) => {
   const [burgerRef, setBurgerRef] = useState(null);
@@ -36,13 +35,8 @@ const Header = ({ children }) => {
       }}
       padding="md"
     >
-      <AppShell.Header
-        classNames={{
-          header: classes.header,
-        }}
-        mt={{ base: 0, sm: 20 }}
-      >
-        <Container fluid mx={{ base: 0, sm: 100 }} size="lg" h="100%">
+      <AppShell.Header mt={{ base: 0, sm: 20 }}>
+        <Container fluid mx={{ base: 0, sm: 70 }} size="lg" h="100%">
           <Group h="100%" align="center">
             {/* Mobile */}
             <Box
@@ -68,7 +62,8 @@ const Header = ({ children }) => {
             </Group>
 
             {/* Desktop */}
-            <Group
+            <Flex
+              wrap="nowrap"
               h="100%"
               align="center"
               style={{ flex: 1 }}
@@ -76,9 +71,6 @@ const Header = ({ children }) => {
               visibleFrom="sm"
             >
               <Group>
-                {/* <UnstyledButton component={Link} to="/">
-                  <Image src={Logo} width={200} height={52} alt="logo" />
-                </UnstyledButton> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="33"
@@ -94,7 +86,6 @@ const Header = ({ children }) => {
                 </svg>
 
                 <svg
-                  className={classes.svg}
                   xmlns="http://www.w3.org/2000/svg"
                   width="108"
                   height="24"
@@ -106,12 +97,12 @@ const Header = ({ children }) => {
                   ></path>
                 </svg>
               </Group>
-              <Group h="100%" ml="xl" gap={0} visibleFrom="sm">
+              <Group h="100%" ml={50} gap={0}>
                 <Navigation />
               </Group>
-            </Group>
+            </Flex>
             <Group h="100%" visibleFrom="sm">
-              <Settings />
+              <Auth />
             </Group>
           </Group>
         </Container>
@@ -122,21 +113,19 @@ const Header = ({ children }) => {
       </AppShell.Navbar>
 
       <AppShell.Main>
-        <section id="content" className={classes.section}>
-          <Container
-            p={0}
-            fluid
-            mx={{ base: 0, sm: 100 }}
-            mb={{
-              base: 50,
-            }}
-            mt={{ base: 20 }}
-            size="lg"
-            h="100%"
-          >
-            {children}
-          </Container>
-        </section>
+        <Container
+          p={0}
+          fluid
+          mx={{ base: 0, sm: 70 }}
+          mb={{
+            base: 50,
+          }}
+          mt={{ base: 20 }}
+          size="lg"
+          h="100%"
+        >
+          {children}
+        </Container>
       </AppShell.Main>
     </AppShell>
   );
