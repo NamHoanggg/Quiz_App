@@ -1,4 +1,4 @@
-import { Flex, Group, Overlay, Text } from "@mantine/core";
+import { Flex, Group, Overlay, Text } from '@mantine/core';
 
 const NavbarMobile = ({ setNavRef }) => {
   return (
@@ -21,13 +21,7 @@ const NavbarMobile = ({ setNavRef }) => {
           </Text>
         </Flex>
       </Flex>
-      <Overlay
-        color="#000"
-        backgroundOpacity={0.1}
-        blur={4}
-        pos="absolute"
-        zIndex={0}
-      />
+      <Overlay color="#000" backgroundOpacity={0.1} blur={4} pos="absolute" zIndex={0} />
     </Flex>
   );
 };

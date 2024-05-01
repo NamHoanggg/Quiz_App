@@ -1,6 +1,6 @@
-import { ActionIcon } from "@mantine/core";
-import { NavLink } from "react-router-dom";
-import { IconSearch } from "@tabler/icons-react";
+import { ActionIcon } from '@mantine/core';
+import { NavLink } from 'react-router-dom';
+import { IconSearch } from '@tabler/icons-react';
 
 const SearchMobile = () => {
   return (

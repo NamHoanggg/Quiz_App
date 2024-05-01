@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import App from "./App";
-import "@mantine/core/styles.css";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import User from "./components/User/User";
-import Admin from "./components/Admin/Admin";
-import { ThemeProvider } from "./theme/ThemeProvider";
-import HomePage from "./components/Home/HomePage";
-import ManageUser from "./components/Admin/Content/ManageUser";
-import DashBoard from "./components/Admin/Content/DashBoard";
+import App from './App';
+import '@mantine/core/styles.css';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import User from './components/User/User';
+import Admin from './components/Admin/Admin';
+import { ThemeProvider } from './theme/ThemeProvider';
+import HomePage from './components/Home/HomePage';
+import ManageUser from './components/Admin/Content/ManageUser';
+import DashBoard from './components/Admin/Content/DashBoard';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <ThemeProvider>
@@ -29,7 +29,7 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </ThemeProvider>
+  </ThemeProvider>,
   // </React.StrictMode>
 );
 

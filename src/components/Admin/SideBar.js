@@ -1,4 +1,4 @@
-import background from "../../assets/images/backgound-sidebar2.jpg";
+import background from '../../assets/images/backgound-sidebar2.jpg';
 import {
   AppShell,
   Box,
@@ -9,24 +9,36 @@ import {
   BackgroundImage,
   Stack,
   Divider,
+  UnstyledButton,
   Menu,
-} from "@mantine/core";
+  rem,
+} from '@mantine/core';
 import {
   IconLayoutDashboardFilled,
-  IconAdjustmentsFilled,
-} from "@tabler/icons-react";
-import { Link } from "react-router-dom";
-import { useDisclosure } from "@mantine/hooks";
+  IconListCheck,
+  IconChevronRight,
+  IconUserEdit,
+  IconClipboardText,
+  IconNotes,
+  IconChevronDown,
+} from '@tabler/icons-react';
+
+import { useDisclosure } from '@mantine/hooks';
+import { Link } from 'react-router-dom';
+import classes from './Content.module.scss';
+import { useHover } from '@mantine/hooks';
 
 const SideBar = ({ children }) => {
   const [opened, { toggle }] = useDisclosure();
+  const { hovered, ref } = useHover();
+
   return (
     <AppShell
       withBorder={false}
       header={{ height: { base: 60, sm: 0 } }}
       navbar={{
-        width: 300,
-        breakpoint: "sm",
+        width: 250,
+        breakpoint: 'sm',
         collapsed: { mobile: !opened },
       }}
       padding="md"
@@ -40,9 +52,9 @@ const SideBar = ({ children }) => {
 
       <AppShell.Navbar>
         <Box w="100%" h="100%">
-          <BackgroundImage w="100%" h="100%" src={background} opacity={0.8}>
-            <Stack>
-              <Group justify="center" mt="20">
+          <BackgroundImage w="100%" h="100%" src={background}>
+            <Stack align="center">
+              <Group mt="20">
                 <svg
                   color="#fff"
                   xmlns="http://www.w3.org/2000/svg"
@@ -72,19 +84,67 @@ const SideBar = ({ children }) => {
                 </svg>
               </Group>
 
-              <Group justify="center">
-                <Divider size="xs" my="10" color="#fff" opacity="0.7" w="90%" />
-              </Group>
+              <Divider size="xs" my="10" color="#fff" opacity="0.7" w="90%" />
 
-              <Menu
-                trigger="hover"
-                transitionProps={{ exitDuration: 0 }}
-                withinPortal
-                width={220}
-                offset={0}
-                shadow="sm"
-                position="bottom-start"
-              ></Menu>
+              <Stack gap={20} w="90%" c="#fff" align="flex-start" mt={10}>
+                <UnstyledButton component={Link} to="/admin" className={classes.sideBarAdmin}>
+                  <Group gap={10} justify="flex-start">
+                    <IconLayoutDashboardFilled size={18} stroke={1.5} />
+                    <span>Dasboard</span>
+                  </Group>
+                </UnstyledButton>
+
+                <Menu
+                  classNames={classes}
+                  trigger="hover"
+                  transitionProps={{ exitDuration: 0 }}
+                  withinPortal
+                  width={200}
+                  offset={0}
+                  shadow="sm"
+                  position="bottom-start"
+                >
+                  <Menu.Target>
+                    <UnstyledButton className={classes.sideBarAdmin} ref={ref}>
+                      <Group gap={10} justify="flex-start">
+                        <IconListCheck size={18} stroke={1.5} />
+                        <span>Features</span>
+                        {hovered ? (
+                          <IconChevronDown size="1.2rem" stroke={1.5} className={classes.icon} />
+                        ) : (
+                          <IconChevronRight size="1.2rem" stroke={1.5} className={classes.icon} />
+                        )}
+                      </Group>
+                    </UnstyledButton>
+                  </Menu.Target>
+                  <Menu.Dropdown>
+                    <Menu.Item
+                      component={Link}
+                      to="/admin/manage-users"
+                      my={rem(12.5)}
+                      leftSection={<IconUserEdit size={18} stroke={1.5} />}
+                    >
+                      Users Management
+                    </Menu.Item>
+                    <Menu.Item
+                      component={Link}
+                      to="/"
+                      my={rem(12.5)}
+                      leftSection={<IconClipboardText size={18} stroke={1.5} />}
+                    >
+                      Quiz Management
+                    </Menu.Item>
+                    <Menu.Item
+                      component={Link}
+                      to="/admin"
+                      my={rem(12.5)}
+                      leftSection={<IconNotes size={18} stroke={1.5} />}
+                    >
+                      Answer Management
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+              </Stack>
             </Stack>
           </BackgroundImage>
         </Box>

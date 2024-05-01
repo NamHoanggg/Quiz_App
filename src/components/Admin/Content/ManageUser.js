@@ -1,4 +1,4 @@
-import ModalCreateUser from "./ModalCreateUser";
+import ModalCreateUser from './ModalCreateUser';
 
 const ManageUser = () => {
   return <ModalCreateUser />;

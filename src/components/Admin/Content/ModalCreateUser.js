@@ -1,5 +1,5 @@
-import { useForm } from "@mantine/form";
-import { useCallback, useState, useRef } from "react";
+import { useForm } from '@mantine/form';
+import { useCallback, useState, useRef } from 'react';
 import {
   Button,
   Stack,
@@ -14,52 +14,52 @@ import {
   BackgroundImage,
   Box,
   AspectRatio,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import ImageUpload from "../../../assets/images/images-upload.jpg";
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import ImageUpload from '../../../assets/images/images-upload.jpg';
 
 const ModalCreateUser = () => {
   const [opened, { open, close }] = useDisclosure(false);
-  const [tempImage, setTempImage] = useState("");
+  const [tempImage, setTempImage] = useState('');
   const uploadImageRef = useRef(null);
 
   const form = useForm({
-    mode: "uncontrolled",
+    mode: 'uncontrolled',
     initialValues: {
-      email: "",
-      username: "",
-      password: "",
-      role: "USER",
-      image: "",
+      email: '',
+      username: '',
+      password: '',
+      role: 'USER',
+      image: '',
     },
 
     validate: {
       email: (value) =>
-        value === "" || value === null
-          ? "Không được để trống"
+        value === '' || value === null
+          ? 'Không được để trống'
           : /^\S+@\S+$/.test(value)
-          ? ""
-          : "Email không hợp lệ",
+          ? ''
+          : 'Email không hợp lệ',
       password: (value) =>
-        value === "" || value === null
-          ? "Không được để trống"
+        value === '' || value === null
+          ? 'Không được để trống'
           : value.length < 7
-          ? "Mật khẩu phải lớn hơn 7 ký tự."
-          : "",
+          ? 'Mật khẩu phải lớn hơn 7 ký tự.'
+          : '',
       comfirmpassword: (value, values) =>
         value !== values.password
-          ? "Không trùng mật khẩu."
-          : value === "" || value === null
-          ? "Không được để trống"
-          : "",
+          ? 'Không trùng mật khẩu.'
+          : value === '' || value === null
+          ? 'Không được để trống'
+          : '',
     },
   });
 
   const handleTypeChange = useCallback(
     (data) => {
-      form.setFieldValue("role", data?.value);
+      form.setFieldValue('role', data?.value);
     },
-    [form]
+    [form],
   );
 
   const handleChangeImageQuiz = useCallback(
@@ -72,7 +72,7 @@ const ModalCreateUser = () => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [form]
+    [form],
   );
 
   return (
@@ -84,9 +84,9 @@ const ModalCreateUser = () => {
         closeOnClickOutside={false}
         centered
         transitionProps={{
-          transition: "fade",
+          transition: 'fade',
           duration: 300,
-          timingFunction: "linear",
+          timingFunction: 'linear',
         }}
       >
         <Modal.Overlay />
@@ -111,14 +111,14 @@ const ModalCreateUser = () => {
                     withAsterisk
                     label="Email"
                     placeholder="your@email.com"
-                    {...form.getInputProps("email")}
+                    {...form.getInputProps('email')}
                   />
                   <PasswordInput
                     flex={1}
                     withAsterisk
                     label="Password"
                     placeholder="********"
-                    {...form.getInputProps("password")}
+                    {...form.getInputProps('password')}
                   />
                 </Group>
                 <Group mb={20}>
@@ -127,17 +127,15 @@ const ModalCreateUser = () => {
                     withAsterisk
                     label="Username"
                     placeholder="your username"
-                    {...form.getInputProps("username")}
+                    {...form.getInputProps('username')}
                   />
                   <Select
                     flex={1}
                     withAsterisk
                     label="Role"
                     checkIconPosition="right"
-                    data={["USER", "ADMIN"]}
-                    value={
-                      form.getValues().role ? form.getValues().role : "USER"
-                    }
+                    data={['USER', 'ADMIN']}
+                    value={form.getValues().role ? form.getValues().role : 'USER'}
                     onChange={(_value, option) => handleTypeChange(option)}
                   />
                 </Group>
@@ -145,7 +143,7 @@ const ModalCreateUser = () => {
                   <Text fz={14} fw={500}>
                     Upload Image
                   </Text>
-                  <Stack gap={0} style={{ border: "1px  dashed #ccc" }}>
+                  <Stack gap={0} style={{ border: '1px  dashed #ccc' }}>
                     {/* <Box mx="auto">
                       <BackgroundImage
                         style={{
@@ -172,8 +170,8 @@ const ModalCreateUser = () => {
                       <AspectRatio ratio={1080 / 720} maw={300} mx="auto">
                         <img
                           style={{
-                            cursor: "pointer",
-                            objectFit: "cover",
+                            cursor: 'pointer',
+                            objectFit: 'cover',
                           }}
                           src={tempImage || ImageUpload}
                           alt="Upload"
@@ -194,11 +192,7 @@ const ModalCreateUser = () => {
                 </Stack>
                 <Divider c="#141414" size="xs" my={20} opacity={0.9} />
                 <Group justify="flex-end">
-                  <Button
-                    variant="filled"
-                    color="var(--mantine-color-gray-6)"
-                    onClick={close}
-                  >
+                  <Button variant="filled" color="var(--mantine-color-gray-6)" onClick={close}>
                     Close
                   </Button>
                   <Button type="submit">Save</Button>

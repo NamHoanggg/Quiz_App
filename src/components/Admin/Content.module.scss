@@ -1,0 +1,30 @@
+.sideBarAdmin {
+  font-weight: 500;
+  min-width: 7rem;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+.dropdown {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.item {
+  color: #fff;
+
+  &:hover {
+    color: #191919;
+  }
+}
+
+.itemLabel {
+  font-size: 14px;
+  white-space: nowrap;
+}
