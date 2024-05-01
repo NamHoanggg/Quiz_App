@@ -1,16 +1,11 @@
-import { Group, Button } from "@mantine/core";
+import { Group, Button } from '@mantine/core';
 
-import classes from "./Navigation.module.scss";
+import classes from './Navigation.module.scss';
 
 const Auth = () => {
   return (
     <Group gap={0}>
-      <Button
-        variant="transparent"
-        size="md"
-        c="#191919"
-        className={classes.button}
-      >
+      <Button variant="transparent" size="md" c="#191919" className={classes.button}>
         Log in
       </Button>
       <Button
